@@ -127,6 +127,9 @@ int main()
 
 	printTree(list->first->next->value, out);
 
+	list->first->value->code = strCreate();
+	list->first->next->value->code = strCreate();
+
 	getCoded(list->first->next->value);
 
 	findAndPrintCode(list, str, out);
@@ -135,6 +138,8 @@ int main()
 	out.close();
 	removeTree(list->first->next->value);
 	removeTree(list->first->value);
+	strDelete(str);
+	delete str;
 	delete list->first->next;
 	delete list->first;
 	delete list;

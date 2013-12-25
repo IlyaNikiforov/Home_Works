@@ -79,7 +79,7 @@ void addSortedElement(List *list, TreeNode *treeNode)
 {
 	if (list->first->next == nullptr)
 	{
-		ListElement* newElement =  new ListElement;
+		ListElement* newElement = new ListElement;
 		newElement->value = treeNode;
 		newElement->next = nullptr;
 		list->first->next = newElement;

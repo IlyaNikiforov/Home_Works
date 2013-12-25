@@ -117,7 +117,7 @@ TreeNode *createNode(int value, char symbol)
 	node->symbol = symbol;
 	node->left = nullptr;
 	node->right = nullptr;
-	node->code = strCreate();
+	//node->code = strCreate();
 	return node;
 }
 
@@ -223,7 +223,7 @@ void addCode(String *code, TreeNode *&node, char symbol)
 {
 		String *add = strCreate();
 		char *a = new char;
-		a[0] = symbol;
+		*a = symbol;
 		add->begin = a;
 		add->length = 1;
 		node->code = strClone(code);
