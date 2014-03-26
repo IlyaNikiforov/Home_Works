@@ -10,18 +10,18 @@ class MainWindow;
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+	explicit MainWindow(QWidget *parent = 0);
+	~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
-    Calculator calculator;
+	Ui::MainWindow *ui;
+	Calculator calculator;
 
 private slots:
-    void recalculate();
+	void recalculate();
 
 };
 
