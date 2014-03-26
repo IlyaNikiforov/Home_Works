@@ -5,95 +5,95 @@ using namespace std;
 
 LinkedList::LinkedList() : List()
 {
-    first = nullptr;
+	first = nullptr;
 }
 
 LinkedList::~LinkedList()
 {
-    while (first != nullptr)
-        {
-            ListElement *temp = first->next;
+	while (first != nullptr)
+		{
+			ListElement *temp = first->next;
 
-            delete first;
+			delete first;
 
-            first = temp;
-        }
+			first = temp;
+		}
 }
 
 void LinkedList::addValue(int value)
 {
-    ListElement *temp = new ListElement;
-    temp->value = value;
+	ListElement *temp = new ListElement;
+	temp->value = value;
 
-    if (first == nullptr)
-    {
-        temp->next = nullptr;
-        first = temp;
-    }
+	if (first == nullptr)
+	{
+		temp->next = nullptr;
+		first = temp;
+	}
 
-    else
-    {
-        temp->next = first;
-        first = temp;
-    }
+	else
+	{
+		temp->next = first;
+		first = temp;
+	}
 
-    size++;
+	size++;
 }
 
 bool LinkedList::isExist(int value) const
 {
-    ListElement *current = first;
-    while (current != nullptr && current->value != value)
-        current = current->next;
-    if (current == nullptr)
-        return false;
-    return true;
+	ListElement *current = first;
+	while (current != nullptr && current->value != value)
+		current = current->next;
+	if (current == nullptr)
+		return false;
+	return true;
 }
 
 void LinkedList::deleteValue(int value)
 {
-    if (!LinkedList::isExist(value))
-    {
-        cout << "This (" << value << ") element does not exist in your list" << endl;
-        return;
-    }
+	if (!LinkedList::isExist(value))
+	{
+		cout << "This (" << value << ") element does not exist in your list" << endl;
+		return;
+	}
 
-    if (value == first->value)
-    {
-        ListElement *temp = first;
-        first = first->next;
+	if (value == first->value)
+	{
+		ListElement *temp = first;
+		first = first->next;
 
-        delete temp;
+		delete temp;
 
-        size--;
-        return;
-    }
+		size--;
+		return;
+	}
 
-    ListElement *current = first;
+	ListElement *current = first;
 
-    while (current->next->value != value)
-            current = current->next;
+	while (current->next->value != value)
+			current = current->next;
 
-    ListElement *temp = current->next;
-    current->next = current->next->next;
-    delete temp;
-    size--;}
+	ListElement *temp = current->next;
+	current->next = current->next->next;
+	delete temp;
+	size--;}
 
 void LinkedList::print() const
 {
-    ListElement *temp = first;
+	ListElement *temp = first;
 
-        while (temp != nullptr)
-        {
-            cout << temp->value << ' ';
+		while (temp != nullptr)
+		{
+			cout << temp->value << ' ';
 
-            temp = temp->next;
-        }
+			temp = temp->next;
+		}
 
-        cout << endl;
+		cout << endl;
 }
 
 int LinkedList::getSize() const
 {
-    return size;
+	return size;
 }

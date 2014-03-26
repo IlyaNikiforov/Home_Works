@@ -7,68 +7,72 @@ class PointerStack : public Stack <type>
 {
 public:
 
-    PointerStack()
-    {
-        first = nullptr;
-    }
+	PointerStack() : first(nullptr) {}
 
-    ~PointerStack()
-    {
-        while (first != nullptr)
-            {
-                StackElement *temp = first->next;
+	~PointerStack();
 
-                delete first;
+	void addValue(type value);
 
-                first = temp;
-            }
-    }
+	void deleteValue();
 
-    void addValue(type value)
-    {
-        StackElement *temp = new StackElement;
-        temp->value = value;
+	type returnFirst() const;
 
-        if (first == nullptr)
-        {
-            temp->next = nullptr;
-            first = temp;
-        }
+	struct StackElement
+	{
+		type value;
+		StackElement *next;
+	};
 
-        else
-        {
-            temp->next = first;
-            first = temp;
-        }
-
-        this->size++;
-    }
-
-    void deleteValue()
-    {
-        StackElement *temp = first;
-        first = first->next;
-        delete temp;
-        this->size--;
-    }
-
-    type returnFirst() const
-    {
-        if (first == nullptr)
-        {
-            std::cout << "your stack is empty" << std::endl;
-            return 0;
-        }
-
-        return first->value;
-    }
-
-    struct StackElement
-    {
-        type value;
-        StackElement *next;
-    };
-
-    StackElement *first;
+	StackElement *first;
 };
+
+
+template <typename type>
+PointerStack <type> :: ~PointerStack()
+{
+	while (first != nullptr)
+		{
+			StackElement *temp = first->next;
+			delete first;
+			first = temp;
+		}
+}
+
+template <typename type>
+void PointerStack <type> :: addValue(type value)
+{
+	StackElement *temp = new StackElement;
+	temp->value = value;
+	if (first == nullptr)
+	{
+		temp->next = nullptr;
+		first = temp;
+	}
+	else
+	{
+		temp->next = first;
+		first = temp;
+	}
+	this->size++;
+}
+
+template <typename type>
+void PointerStack <type> :: deleteValue()
+{
+	StackElement *temp = first;
+	first = first->next;
+	delete temp;
+	this->size--;
+}
+
+template <typename type>
+type PointerStack <type> :: returnFirst() const
+{
+	if (first == nullptr)
+	{
+		std::cout << "your stack is empty" << std::endl;
+		return 0;
+	}
+	return first->value;
+}
 

@@ -22,30 +22,30 @@ bool priorityCheck(char a, ArrayStack <char> stack)
 	int p2 = 0;
 	
 	if ((a == '-') || (a == '+'))
-        p1 = 2;
-    else if (a == '(')
-        p1 = 0;
-    else if (a == ')')
-        p1 = 1;
-    else
-        p1 = 3;
+		p1 = 2;
+	else if (a == '(')
+		p1 = 0;
+	else if (a == ')')
+		p1 = 1;
+	else
+		p1 = 3;
 	
-    if ((stack.returnFirst() == '+') || (stack.returnFirst() == '-'))
-        p2 = 2;
-    else if ((stack.returnFirst() == '('))
-        p2 = 0;
-    else if ((stack.returnFirst() == ')'))
-        p2 = 1;
+	if ((stack.returnFirst() == '+') || (stack.returnFirst() == '-'))
+		p2 = 2;
+	else if ((stack.returnFirst() == '('))
+		p2 = 0;
+	else if ((stack.returnFirst() == ')'))
+		p2 = 1;
 	else 
-        p2 = 3;
+		p2 = 3;
 
-    return (p2 >= p1);
+	return (p2 >= p1);
 }
 
 void infToPost(char str[], char ans[])
 {
 	int j = 0;
-    ArrayStack <char> stack;
+	ArrayStack <char> stack;
 
 	const int n = strlen(str);
 	
@@ -59,37 +59,37 @@ void infToPost(char str[], char ans[])
 		
 		else if (functionCheck(str[i]))
 		{
-            if ((stack.returnSize() > 0) && (priorityCheck(str[i], stack)))
+			if ((stack.returnSize() > 0) && (priorityCheck(str[i], stack)))
 				{
-                    ans[j] = stack.returnFirst();
+					ans[j] = stack.returnFirst();
 					j++;
-                    stack.deleteValue();
+					stack.deleteValue();
 				}
 
-            stack.addValue(str[i]);
+			stack.addValue(str[i]);
 		}
 
 		else if (str[i] == '(')
-            stack.addValue(str[i]);
+			stack.addValue(str[i]);
 
 		else if (str[i] == ')')
 		{
-            while (stack.returnFirst() != '(')
+			while (stack.returnFirst() != '(')
 			{
-                ans[j] =  stack.returnFirst();
+				ans[j] =  stack.returnFirst();
 				j++;
-                stack.deleteValue();
+				stack.deleteValue();
 			}
 			
-            stack.deleteValue();
+			stack.deleteValue();
 		}
 	}
 
-    while (stack.returnSize() > 0)
+	while (stack.returnSize() > 0)
 	{
-        ans[j] =  stack.returnFirst();
+		ans[j] =  stack.returnFirst();
 		j++;
-        stack.deleteValue();
+		stack.deleteValue();
 	}
 }
 

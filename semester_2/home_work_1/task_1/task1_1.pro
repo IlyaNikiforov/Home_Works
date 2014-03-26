@@ -4,9 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core
+QT	   += core
 
-QT       -= gui
+QT	   -= gui
 
 TARGET = task1_1
 CONFIG   += console
@@ -17,14 +17,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    list.cpp \
-    linkedlist.cpp \
-    arraylist.cpp
+	linkedlist.cpp \
+	arraylist.cpp
 
 HEADERS += \
-    list.h \
-    linkedlist.h \
-    arraylist.h
+	list.h \
+	linkedlist.h \
+	arraylist.h
 
 
 QMAKE_CXXFLAGS += -std=c++0x

@@ -5,21 +5,21 @@
 class LinkedList : public List
 {
 public:
-    LinkedList();
-    ~LinkedList();
+	LinkedList();
+	~LinkedList();
 
-    void addValue(int value);
-    bool isExist(int value) const;
-    void deleteValue(int value);
-    void print() const;
-    int getSize() const;
+	void addValue(int value);
+	bool isExist(int value) const;
+	void deleteValue(int value);
+	void print() const;
+	int getSize() const;
 
 private:
-    struct ListElement
-    {
-        int value;
-        ListElement *next;
-    };
+	struct ListElement
+	{
+		int value;
+		ListElement *next;
+	};
 
-    ListElement *first;
+	ListElement *first;
 };

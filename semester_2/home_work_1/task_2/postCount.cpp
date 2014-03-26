@@ -12,39 +12,39 @@ bool isNumber(char a)
 
 void doOperation (PointerStack <int> *stack, char a)
 {
-    int b = stack->returnFirst();
-    stack->deleteValue();
-    int c = stack->returnFirst();
-    stack->deleteValue();
+	int b = stack->returnFirst();
+	stack->deleteValue();
+	int c = stack->returnFirst();
+	stack->deleteValue();
 
 	if (a == '+')
-        stack->addValue(b + c);
+		stack->addValue(b + c);
 	
 	else if (a == '-')
-        stack->addValue(c - b);
+		stack->addValue(c - b);
 
 	else if (a == '*')
-        stack->addValue(b * c);
+		stack->addValue(b * c);
 
 	else if (a == '/')
-        stack->addValue(c / b);
+		stack->addValue(c / b);
 	
 }
 
 int postCount(char str[])
 {
 	const int n = strlen(str);
-    PointerStack <int> *stack = new PointerStack <int>;
+	PointerStack <int> *stack = new PointerStack <int>;
 
 	for (int i = 0; i < n; i++)
 	{
 		if (isNumber(str[i]))
-            stack->addValue(str[i] - '0');
+			stack->addValue(str[i] - '0');
 		else if (str[i] != ' ')
 			 doOperation (stack, str[i]);
 	}
-    int tmp = stack->returnFirst();
-    delete stack;
+	int tmp = stack->returnFirst();
+	delete stack;
 	return tmp;
 }
 
