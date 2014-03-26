@@ -4,9 +4,9 @@
 class QSort : public Sort
 {
 public:
-    QSort();
-    void sort(int array[], int length);
+	QSort();
+	void sort(int array[], int length);
 private:
-    void qsort(int array[], int begin, int end);
+	void qsort(int array[], int begin, int end);
 };
 

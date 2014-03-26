@@ -3,8 +3,8 @@
 class Sort
 {
 public:
-    Sort();
-    virtual void sort(int array[], int length) = 0;
+	Sort();
+	virtual void sort(int array[], int length) = 0;
 };
 
 

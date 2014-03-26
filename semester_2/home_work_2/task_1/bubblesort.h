@@ -4,8 +4,8 @@
 class BubbleSort : public Sort
 {
 public:
-    BubbleSort();
-    void sort(int array[], int length);
+	BubbleSort();
+	void sort(int array[], int length);
 };
 
 
