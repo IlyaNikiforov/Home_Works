@@ -3,11 +3,14 @@
 #include "arraystack.h"
 #include "infToPost.h"
 #include "postCount.h"
+#include "stacktest.h"
 
 using namespace std;
 
 int main()
 {
+	StackTest test;
+	QTest::qExec(&test);
 	/*ArrayStack <int> stack;
 	stack.addValue(3);
 	stack.addValue(5);

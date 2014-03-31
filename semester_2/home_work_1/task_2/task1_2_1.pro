@@ -8,6 +8,8 @@ QT       += core
 
 QT       -= gui
 
+QT       += testlib
+
 TARGET = task1_2_1
 CONFIG   += console
 CONFIG   -= app_bundle
@@ -25,4 +27,5 @@ HEADERS += \
     pointerstack.h \
     postCount.h \
     stack.h \
-    arraystack.h
+    arraystack.h \
+    stacktest.h

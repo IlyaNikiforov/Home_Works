@@ -8,6 +8,8 @@ QT	   += core
 
 QT	   -= gui
 
+QT    += testlib
+
 TARGET = task1_1
 CONFIG   += console
 CONFIG   -= app_bundle
@@ -23,7 +25,8 @@ SOURCES += main.cpp \
 HEADERS += \
 	list.h \
 	linkedlist.h \
-	arraylist.h
+	arraylist.h \
+    test.h
 
 
 QMAKE_CXXFLAGS += -std=c++0x
