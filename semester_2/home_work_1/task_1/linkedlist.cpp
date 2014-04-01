@@ -3,10 +3,6 @@
 
 using namespace std;
 
-LinkedList::LinkedList() : List()
-{
-	first = nullptr;
-}
 
 LinkedList::~LinkedList()
 {
@@ -25,17 +21,8 @@ void LinkedList::addValue(int value)
 	ListElement *temp = new ListElement;
 	temp->value = value;
 
-	if (first == nullptr)
-	{
-		temp->next = nullptr;
-		first = temp;
-	}
-
-	else
-	{
-		temp->next = first;
-		first = temp;
-	}
+	temp->next = first;
+	first = temp;
 
 	size++;
 }
@@ -77,7 +64,8 @@ void LinkedList::deleteValue(int value)
 	ListElement *temp = current->next;
 	current->next = current->next->next;
 	delete temp;
-	size--;}
+	size--;
+}
 
 void LinkedList::print() const
 {

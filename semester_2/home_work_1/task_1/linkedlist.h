@@ -5,7 +5,7 @@
 class LinkedList : public List
 {
 public:
-	LinkedList();
+	LinkedList() : first(nullptr), List() {}
 	~LinkedList();
 
 	void addValue(int value);
@@ -17,8 +17,8 @@ public:
 private:
 	struct ListElement
 	{
-		int value;
-		ListElement *next;
+		int value; /// value of current element in list
+		ListElement *next; /// pointer to its next element
 	};
 
 	ListElement *first;

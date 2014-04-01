@@ -6,13 +6,13 @@ using namespace std;
 void ArrayList::addValue(int value)
 {
 	size++;
-	if (size > 1000)
+	if (size > sizeOfArray)
 	{
 		cout << "List is full, sorry" << endl;
 		size--;
 		return;
 	}
-	array[size-1] = value;
+	array[size - 1] = value;
 }
 
 bool ArrayList::isExist(int value) const
