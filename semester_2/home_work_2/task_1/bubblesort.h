@@ -1,10 +1,10 @@
 #pragma once
 #include "sort.h"
 
+/// class of bubble sort
 class BubbleSort : public Sort
 {
 public:
-	BubbleSort();
 	void sort(int array[], int length);
 };
 

@@ -1,7 +1,8 @@
-#include "iostream"
-#include "matrixsort.h"
+#include "printer.h"
+#include "consoleprinter.h"
+#include "fileprinter.h"
 #include "matrixtest.h"
-#include "stdlib.h"
+#include "iostream"
 
 using namespace std;
 

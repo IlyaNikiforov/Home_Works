@@ -1,9 +1,5 @@
 #include "qsort.h"
 
-QSort::QSort()
-{
-}
-
 void QSort::sort(int array[], int length)
 {
 	qsort(array, 0, length - 1);

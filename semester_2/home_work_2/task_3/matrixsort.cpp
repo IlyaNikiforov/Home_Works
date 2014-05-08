@@ -1,10 +1,6 @@
 #include "matrixsort.h"
 #include "iostream"
 
-MatrixSort::MatrixSort()
-{
-}
-
 void MatrixSort::sortMatrix(int *matrix[], int N, int M)
 {
     for (int i = 0; i < M; i++)

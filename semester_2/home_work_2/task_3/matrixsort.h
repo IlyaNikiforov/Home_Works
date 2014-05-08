@@ -2,9 +2,9 @@
 
 class MatrixSort
 {
-public:
-    MatrixSort();
-    void sortMatrix(int *matrix[], int N, int M);
+	public:
+		/// function that sorts first row of matrix
+		void sortMatrix(int *matrix[], int N, int M);
 };
 
 

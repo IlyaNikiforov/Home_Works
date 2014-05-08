@@ -1,9 +1,5 @@
 #include "heapsort.h"
 
-HeapSort::HeapSort()
-{
-}
-
 int HeapSort::max(int a[], int i, int j)
 {
 	if (a[i] >= a[j])

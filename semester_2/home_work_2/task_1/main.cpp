@@ -3,6 +3,8 @@
 #include "qsort.h"
 #include "heapsort.h"
 #include "bubblesort.h"
+#include "sorttest.h"
+
 
 using namespace std;
 
@@ -15,6 +17,8 @@ enum KindOfSort
 
 int main()
 {
+	SortTest test;
+	QTest::qExec(&test);
 	cout << "Sorting programm" << endl;
 	cout << "Enter your array. If you want to finish, enter -1000" << endl;
 

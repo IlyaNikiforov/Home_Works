@@ -1,9 +1,5 @@
 #include "bubblesort.h"
 
-BubbleSort::BubbleSort()
-{
-}
-
 void BubbleSort::sort(int array[], int length)
 {
 	for (int i = 0; i < length; i++)
