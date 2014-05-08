@@ -7,10 +7,12 @@ MainWindow::MainWindow(QWidget *parent) :
 	ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
+	/// adding operations
 	ui->operation->addItem("-");
 	ui->operation->addItem("+");
 	ui->operation->addItem(":");
 	ui->operation->addItem("*");
+	/// recalculating after every changing
 	connect(ui->first_button, SIGNAL(valueChanged(int)), this, SLOT(recalculate()));
 	connect(ui->secondbutton, SIGNAL(valueChanged(int)), this, SLOT(recalculate()));
 	connect(ui->operation, SIGNAL(currentIndexChanged(QString)), this, SLOT(recalculate()));

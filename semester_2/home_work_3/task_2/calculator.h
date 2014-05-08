@@ -3,6 +3,7 @@
 class Calculator
 {
 public:
+	/// function receives two numbers and operation. Then returns answer
 	static double doOperation(int firstNumber, int secondNumber, char operation)
 	{
 		if (operation == '-')
