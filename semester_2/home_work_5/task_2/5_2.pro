@@ -21,5 +21,5 @@ TEMPLATE = app
 SOURCES += main.cpp
 
 HEADERS += \
-    storage.h \
-    storagetest.h
+    set.h \
+    settest.h

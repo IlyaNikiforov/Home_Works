@@ -21,6 +21,7 @@ TEMPLATE = app
 SOURCES += main.cpp
 
 HEADERS += \
-    storage.h \
     storagetest.h \
-    listerrors.h
+    listerrors.h \
+    set.h \
+    uniquelist.h

@@ -1,12 +1,12 @@
 #include "iostream"
-#include "storage.h"
-#include "storagetest.h"
+#include "set.h"
+#include "settest.h"
 
 using namespace std;
 
 int main()
 {
-	StorageTest test;
+	SetTest test;
 	QTest::qExec(&test);
 	return 0;
 }

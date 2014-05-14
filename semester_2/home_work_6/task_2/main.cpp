@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-	StorageTest test;
+	ListTest test;
 	QTest::qExec(&test);
 	return 0;
 }

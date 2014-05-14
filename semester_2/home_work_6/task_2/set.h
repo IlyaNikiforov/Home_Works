@@ -4,23 +4,23 @@
 using namespace std;
 
 template <typename type>
-class Storage
+class Set
 {
 	public:
-		Storage() : size(0), first(nullptr) {}
-		~Storage();
+		Set() : size(0), first(nullptr) {}
+		~Set();
 		void add(type value);
+		int isExists(type value);
 		void del(type value);
-		int isExist(type value);
 		type element(int i);
-		///intersection of two storages. Returns new storage
-		static Storage<type> *intersection(Storage *list1, Storage *list2);
-		///unification of two storages. Returns new storage
-		static Storage<type> *unification(Storage *list1, Storage *list2);
+		///intersection of two Sets. Returns new Set
+		static Set<type> *intersection(Set *list1, Set *list2);
+		///unification of two Sets. Returns new Set
+		static Set<type> *unification(Set *list1, Set *list2);
 		int getSize();
 		void print();
 
-	private:
+	protected:
 		struct ListElement
 		{
 			type value;
@@ -33,7 +33,7 @@ class Storage
 };
 
 template <typename type>
-Storage <type> ::~Storage()
+Set <type> ::~Set()
 {
 	while (first != nullptr)
 	{
@@ -43,23 +43,14 @@ Storage <type> ::~Storage()
 	}
 }
 
-template <typename type>
-type Storage <type> ::element(int i)
-{
-	if (size <= i)
-		return 0;
-	ListElement *current = first;
-	for (int j = 0; j < i; j++)
-		current = current->next;
-	return current->value;
-}
+
 
 template <typename type>
-void Storage <type> ::add(type value)
+void Set <type> ::add(type value)
 {
-	ListElement *newElement = new ListElement;
 	if (first == nullptr)
 	{
+		ListElement *newElement = new ListElement;
 		newElement->next = nullptr;
 		newElement->value = value;
 		newElement->count = 1;
@@ -77,6 +68,8 @@ void Storage <type> ::add(type value)
 		size++;
 		return;
 	}
+
+	ListElement *newElement = new ListElement;
 
 	if (current->next == nullptr && current->value < value)
 	{
@@ -99,7 +92,7 @@ void Storage <type> ::add(type value)
 }
 
 template <typename type>
-int Storage <type> ::isExist(type value)
+int Set <type> ::isExists(type value)
 {
 	ListElement *current = first;
 	while (current != nullptr)
@@ -113,9 +106,9 @@ int Storage <type> ::isExist(type value)
 }
 
 template <typename type>
-void Storage <type> ::del(type value)
+void Set <type> ::del(type value)
 {
-	if (!isExist(value))
+	if (!isExists(value))
 		return;
 
 	ListElement *current = first;
@@ -149,16 +142,27 @@ void Storage <type> ::del(type value)
 }
 
 template <typename type>
-Storage<type> *Storage <type> ::intersection(Storage *list1, Storage *list2)
+type Set <type> ::element(int i)
 {
-	Storage *list = new Storage;
+	if (size <= i)
+		return 0;
+	ListElement *current = first;
+	for (int j = 0; j < i; j++)
+		current = current->next;
+	return current->value;
+}
+
+template <typename type>
+Set<type> *Set <type> ::intersection(Set *list1, Set *list2)
+{
+	Set *list = new Set;
 	int temp1 = 0;
 	int temp2 = 0;
 	int size = list1->getSize();
 	for (int i = 0; i < size; i++)
 	{
-		temp1 = list1->isExist(list1->element(i));
-		temp2 = list2->isExist(list1->element(i));
+		temp1 = list1->isExists(list1->element(i));
+		temp2 = list2->isExists(list1->element(i));
 		if (temp2 > temp1)
 			for (int j = 0; j < temp1; j++)
 				list->add(list1->element(i));
@@ -170,15 +174,15 @@ Storage<type> *Storage <type> ::intersection(Storage *list1, Storage *list2)
 }
 
 template <typename type>
-Storage<type>* Storage<type>::unification(Storage *list1, Storage *list2)
+Set<type>* Set<type>::unification(Set *list1, Set *list2)
 {
-	Storage *list = new Storage;
+	Set *list = new Set;
 	int size = list2->getSize();
 	int temp1 = 0;
 	int temp2 = 0;
 	for (int i = 0; i < size; i++)
 	{
-		temp2 = list2->isExist(list2->element(i));
+		temp2 = list2->isExists(list2->element(i));
 		for (int j = 0; j < temp2; j++)
 			list->add(list2->element(i));
 	}
@@ -187,8 +191,8 @@ Storage<type>* Storage<type>::unification(Storage *list1, Storage *list2)
 
 	for (int i = 0; i < size; i++)
 	{
-		temp1 = list1->isExist(list1->element(i));
-		temp2 = list2->isExist(list1->element(i));
+		temp1 = list1->isExists(list1->element(i));
+		temp2 = list2->isExists(list1->element(i));
 		if (temp1 > temp2)
 			for (int j = 0; j < temp1 - temp2; j++)
 				list->add(list1->element(i));
@@ -197,13 +201,13 @@ Storage<type>* Storage<type>::unification(Storage *list1, Storage *list2)
 }
 
 template <typename type>
-int Storage <type> ::getSize()
+int Set <type> ::getSize()
 {
 	return size;
 }
 
 template <typename type>
-void Storage <type> ::print()
+void Set <type> ::print()
 {
 	ListElement *current = first;
 	for (int i = 0; i < size; i++)
