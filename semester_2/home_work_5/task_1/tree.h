@@ -16,6 +16,7 @@ class Tree
 		void printTree();
 		double calculateTree();
 	private:
+
 		static Node *createSubTree(Node *currentNode, char a[], int &i);
 		static Number* createNumberNode(int number);
 		static Operation* createOperationNode(char symbol);

@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2014-05-09T13:30:45
+# Project created by QtCreator 2014-05-14T15:14:31
 #
 #-------------------------------------------------
 
@@ -10,7 +10,7 @@ QT       -= gui
 
 QT       += testlib
 
-TARGET = 5_1
+TARGET = 7_1
 CONFIG   += console
 CONFIG   -= app_bundle
 CONFIG   += c++11
@@ -19,16 +19,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    tree.cpp \
-    operation.cpp
+    avltree.cpp
 
 HEADERS += \
-    tree.h \
-    node.h \
-    operation.h \
-    number.h \
-    summ.h \
-    subtraction.h \
-    multiplication.h \
-    division.h \
-    treetest.h
+    avltree.h \
+    avltest.h

@@ -7,14 +7,18 @@ using namespace std;
 class Operation : public Node
 {
 	public:
-		Operation() {}
+		Operation() : left(nullptr), right(nullptr) {}
 		~Operation()
 		{
 			delete left;
 			delete right;
 		}
-
-		//Node *left;
-		//Node *right;
+		void setLeft(Node *node);
+		void setRight(Node *node);
+		Node *getLeft();
+		Node *getRight();
+	protected:
+		Node *left;
+		Node *right;
 };
 

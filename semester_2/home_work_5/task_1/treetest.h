@@ -25,15 +25,6 @@ class TreeTest : public QObject
 			delete tree;
 		}
 
-		void testCalculating()
-		{
-			Operation *node = new Subtraction;
-			tree->head = node;
-			node->left = new Number(8);
-			node->right = new Number(5);
-			QVERIFY(tree->calculateTree() == (double)3);
-		}
-
 		void testFull()
 		{
 			ifstream in ("input.txt");

@@ -33,8 +33,6 @@ Operation* Tree::createOperationNode(char symbol)
 		newNode = new Multiplication;
 	else if (symbol == '/')
 		newNode = new Division;
-	newNode->left = nullptr;
-	newNode->right = nullptr;
 	return newNode;
 }
 
@@ -65,7 +63,8 @@ Node *Tree::createSubTree(Node *current, char a[], int &i)
 					continue;
 				}
 				Node *newNode;
-				current->left = newNode;
+				Operation *copy = dynamic_cast<Operation *>(current);
+				copy->setLeft(newNode);
 				i++;
 				createSubTree(newNode, a, i);
 			}
@@ -91,8 +90,9 @@ Node *Tree::createSubTree(Node *current, char a[], int &i)
 			{
 				current = createOperationNode(a[i]);
 				i++;
-				current->left = createSubTree(current->left, a, i);
-				current->right = createSubTree(current->right, a, i);
+				Operation *copy = dynamic_cast<Operation *>(current);
+				copy->setLeft(createSubTree(copy->getLeft(), a, i));
+				copy->setRight(createSubTree(copy->getRight(), a, i));
 			}
 
 			else
