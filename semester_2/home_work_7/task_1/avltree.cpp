@@ -22,10 +22,7 @@ bool AVLTree::isExists(int value)
 			current = current->right;
 	}
 
-	if (current == nullptr)
-		return false;
-	else
-		return true;
+	return current != nullptr;
 }
 
 void AVLTree::deleteTree(TreeNode *node)

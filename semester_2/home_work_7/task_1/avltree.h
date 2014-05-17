@@ -8,9 +8,13 @@ class AVLTree
 		void add(int value);
 		void del(int value);
 		bool isExists(int value);
+		/// returns height
 		int getHeight();
+		/// prints your tree in increasing order
 		void printTreeInc();
+		/// prints your tree in decreasing order
 		void printTreeDec ();
+		/// prints tree as it realy is
 		void printDebug();
 	private:
 		struct TreeNode
@@ -30,6 +34,7 @@ class AVLTree
 				count = 1;
 			}
 		};
+		/// recursion functions:
 		void deleteTree(TreeNode *node);
 		int height (TreeNode *node);
 		int balanceFactor(TreeNode* node);
