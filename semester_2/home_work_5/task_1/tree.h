@@ -12,8 +12,11 @@ class Tree
 		Tree();
 		~Tree();
 		Node *head;
+		/// creates tree according to expression
 		void createTree(char a[], int i);
+		/// prints this tree as an expression
 		void printTree();
+		/// returns answer of this expression
 		double calculateTree();
 	private:
 
