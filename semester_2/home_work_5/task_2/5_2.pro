@@ -21,5 +21,6 @@ TEMPLATE = app
 SOURCES += main.cpp
 
 HEADERS += \
-    set.h \
-    settest.h
+    settest.h \
+    list.h \
+    set.h
