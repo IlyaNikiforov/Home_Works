@@ -24,4 +24,5 @@ HEADERS += \
     storagetest.h \
     listerrors.h \
     set.h \
-    uniquelist.h
+    uniquelist.h \
+    list.h
