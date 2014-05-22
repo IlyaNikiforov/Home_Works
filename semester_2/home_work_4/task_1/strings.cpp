@@ -12,7 +12,7 @@ Strings::Strings()
 
 Strings::~Strings()
 {
-	delete string;
+	delete[] string;
 }
 
 Strings* Strings::charToStr(char *a) //!!!!!!!!!!!!!!!
@@ -52,7 +52,7 @@ void Strings::add(Strings *&add)
 	newstr[n] = '\n';
 	delete add;
 	if (this->string)
-		delete this->string;
+		delete[] this->string;
 	this->string = newstr;
 	this->length = n;
 }
@@ -71,7 +71,7 @@ void Strings::add(char add[])
 	newstr[n] = '\n';
 	//delete add;
 	if (this->string)
-		delete this->string;
+		delete[] this->string;
 	this->string = newstr;
 	this->length = n;
 }

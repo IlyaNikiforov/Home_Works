@@ -33,7 +33,9 @@ class StringTest : public QObject
 			char temp[10] = "a";
 			//std::cout << strlen(temp);
 			str->add(temp);
-			QVERIFY(str->strToChar()[0] == 'a');
+			char *string = str->strToChar();
+			QVERIFY(string[0] == 'a');
+			delete[] string;
 			QVERIFY(str->returnLength() == 1);
 		}
 
