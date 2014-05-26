@@ -6,6 +6,8 @@
 #include "qpushbutton.h"
 #include "qsignalmapper.h"
 #include "qmessagebox.h"
+#include "qpalette.h"
+#include "qcolor.h"
 
 namespace Ui
 {
@@ -21,6 +23,7 @@ class MainWindow : public QMainWindow
 		~MainWindow();
 		void createButtons();
 		void newGame();
+		void showWinner();
 	public slots:
 		void buttonClicked(int index);
 		void clearField();

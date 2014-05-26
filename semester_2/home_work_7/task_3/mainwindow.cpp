@@ -35,20 +35,15 @@ void MainWindow::createButtons()
 
 void MainWindow::buttonClicked(int index)
 {
+	if (vector.at(index)->text() == "O" || vector.at(index)->text() == "X")
+		return;
 	if (tictactoe->returnTurn() == 0)
 		vector.at(index)->setText("O");
 	else
 		vector.at(index)->setText("X");
 	tictactoe->setValue(index / currentSize, index % currentSize);
 	if (tictactoe->DoesPlayerWins())
-	{
-		QMessageBox msgBox;
-		if (tictactoe->returnTurn() == 0)
-			msgBox.setText("X wins");
-		else
-			msgBox.setText("O wins");
-		msgBox.exec();
-	}
+		showWinner();
 }
 
 void MainWindow::clearField()
@@ -68,4 +63,33 @@ void MainWindow::newGame()
 	valueToWin = ui->valueSpin->value();
 	tictactoe = new TicTacToe(currentSize, valueToWin);
 	createButtons();
+}
+
+void MainWindow::showWinner()
+{
+	int **winner = new int *[2];
+	winner[0] = new int [valueToWin];
+	winner[1] = new int [valueToWin];
+	tictactoe->returnWinningCombination(winner);
+	QPalette Pal(palette());
+	Pal.setColor(QPalette::Background, Qt::red);
+	 for (int i = 0; i < valueToWin; i++)
+	{
+		vector.at(winner[0][i] * currentSize + winner[1][i])->setAutoFillBackground(true);
+		vector.at(winner[0][i] * currentSize + winner[1][i])->setPalette(Pal);
+		vector.at(winner[0][i] * currentSize + winner[1][i])->show();
+		if (vector.at(winner[0][i] * currentSize + winner[1][i])->palette().background().color() == Qt::red)
+			vector.at(winner[0][i] * currentSize + winner[1][i])->setText("win");
+	}
+	for (int i = 0; i < currentSize; i++)
+		for (int j = 0; j < currentSize; j++)
+		{
+			vector.at(i * currentSize + j)->setDisabled(true);
+		}
+	QMessageBox msgBox;
+	if (tictactoe->returnTurn() == 0)
+		msgBox.setText("X wins");
+	else
+		msgBox.setText("O wins");
+	msgBox.exec();
 }

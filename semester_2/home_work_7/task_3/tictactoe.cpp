@@ -5,6 +5,9 @@ TicTacToe::TicTacToe(int value, int valueToWin)
 	whooseTurn = 1;
 	winSize = valueToWin;
 	size = value;
+	winningCombination = new int *[2];
+	winningCombination[0] = new int [valueToWin];
+	winningCombination[1] = new int [valueToWin];
 	field = new int *[size];
 	for (int i = 0; i < size; i++)
 		field[i] = new int [size];
@@ -18,6 +21,9 @@ TicTacToe::~TicTacToe()
 	for (int i = 0; i < size; i++)
 		delete field[i];
 	delete[] field;
+	delete winningCombination[0];
+	delete winningCombination[1];
+	delete[] winningCombination;
 }
 
 int TicTacToe::returnTurn()
@@ -43,7 +49,15 @@ bool TicTacToe::DoesPlayerWins()
 				temp++;
 				j++;
 				if (temp == winSize)
+				{
+					for (int k = 0; k < winSize; k++)
+					{
+						j--;
+						winningCombination[0][k] = i;
+						winningCombination[1][k] = j;
+					}
 					return true;
+				}
 			}
 			j -= temp;
 			temp = 0;
@@ -53,7 +67,15 @@ bool TicTacToe::DoesPlayerWins()
 				temp++;
 				i++;
 				if (temp == winSize)
+				{
+					for (int k = 0; k < winSize; k++)
+					{
+						i--;
+						winningCombination[0][k] = i;
+						winningCombination[1][k] = j;
+					}
 					return true;
+				}
 			}
 			i -= temp;
 			temp = 0;
@@ -64,7 +86,16 @@ bool TicTacToe::DoesPlayerWins()
 				i++;
 				j++;
 				if (temp == winSize)
+				{
+					for (int k = 0; k < winSize; k++)
+					{
+						j--;
+						i--;
+						winningCombination[0][k] = i;
+						winningCombination[1][k] = j;
+					}
 					return true;
+				}
 			}
 			i -= temp;
 			j -= temp;
@@ -76,7 +107,16 @@ bool TicTacToe::DoesPlayerWins()
 				i++;
 				j--;
 				if (temp == winSize)
+				{
+					for (int k = 0; k < winSize; k++)
+					{
+						j++;
+						i--;
+						winningCombination[0][k] = i;
+						winningCombination[1][k] = j;
+					}
 					return true;
+				}
 			}
 			i -= temp;
 			j += temp;
@@ -84,6 +124,15 @@ bool TicTacToe::DoesPlayerWins()
 		}
 
 	return false;
+}
+
+void TicTacToe::returnWinningCombination(int **matrix)
+{
+	for (int i = 0; i < winSize; i++)
+	{
+		matrix[0][i] = winningCombination[0][i];
+		matrix[1][i] = winningCombination[1][i];
+	}
 }
 
 
