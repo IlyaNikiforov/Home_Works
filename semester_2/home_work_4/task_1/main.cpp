@@ -2,6 +2,8 @@
 #include "hashtest.h"
 #include "hash.h"
 #include "iostream"
+#include "hashfunction1.h"
+#include "hashFunction2.h"
 
 using namespace std;
 
@@ -25,7 +27,10 @@ int main()
 	cout << "Enter size of hash" << endl;
 	int sizeOfHash = 0;
 	cin >> sizeOfHash;
-	Hash *hash = new Hash(sizeOfHash);
+	bool typeOfHash = 0;
+	HashFunction *hash1 = new HashFunction1;
+	HashFunction *hash2 = new HashFunction2;
+	Hash *hash = new Hash(sizeOfHash, hash1);
 	while (choice >= add && choice <= change)
 	{
 		cout << "What would you like to do?" << endl;
@@ -75,17 +80,16 @@ int main()
 
 		else if (choice == change)
 		{
-			cout << "enter new factor:" << endl;
-			int factor = 0;
-			cin >> factor;
-			cout << "enter new module:" << endl;
-			int mod = 0;
-			cin >> mod;
-			hash->changeHashFunction(factor, mod);
+			if (typeOfHash == 0)
+				hash->changeHashFunction(hash2);
+			else hash->changeHashFunction(hash1);
 		}
 
 		hash->print();
 	}
 
+	delete hash1;
+	delete hash2;
+	delete hash;
 	return 0;
 }

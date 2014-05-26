@@ -3,11 +3,10 @@
 
 using namespace std;
 
-Hash::Hash(int size)
+Hash::Hash(int size, HashFunction *newHashFunction)
 {
 	sizeOfHash = size;
-	mod = 1000;
-	factor = 107;
+	hashFunction = newHashFunction;
 	list = new List*[sizeOfHash];
 
 	for (int i = 0; i < sizeOfHash; i++)
@@ -26,26 +25,9 @@ Hash::~Hash()
 	delete[] list;
 }
 
-int Hash::hashFunction(Strings *str)
+void Hash::changeHashFunction(HashFunction *newHashFunction)
 {
-	int index = 0;
-	char temp = 0;
-	for (int i = 0; i < str->returnLength(); i++)
-	{
-		temp = str->element(i);
-		index += (i + 1) * (temp - '0') * (factor + i);
-	}
-	index %= mod;
-
-	if (index < 0)
-		index = -index;
-	return index % sizeOfHash;
-}
-
-void Hash::changeHashFunction(int newFactor, int newMod)
-{
-	mod = newMod;
-	factor = newFactor;
+	hashFunction = newHashFunction;
 	List **list1 = new List *[sizeOfHash];
 	for (int i = 0; i < sizeOfHash; i++)
 		list1[i] = new List;
@@ -53,7 +35,7 @@ void Hash::changeHashFunction(int newFactor, int newMod)
 	{
 		while (list[i]->getSize() > 0)
 		{
-			const int n = hashFunction(list[i]->element(0));
+			const int n = hashFunction->hash(list[i]->element(0)) % sizeOfHash;
 			list1[n]->addValue(list[i]->element(0));
 			list[i]->deleteValue(list[i]->element(0));
 		}
@@ -65,13 +47,13 @@ void Hash::changeHashFunction(int newFactor, int newMod)
 
 void Hash::add(Strings *str)
 {
-	const int n = hashFunction(str);
+	const int n = hashFunction->hash(str) % sizeOfHash;
 	list[n]->addValue(str);
 }
 
 bool Hash::find(Strings *str)
 {
-	const int n = hashFunction(str);
+	const int n = hashFunction->hash(str) % sizeOfHash;
 	return list[n]->isExist(str);
 }
 
@@ -79,7 +61,7 @@ void Hash::del(Strings *str)
 {
 	if (!find(str))
 		return;
-	const int n = hashFunction(str);
+	const int n = hashFunction->hash(str) % sizeOfHash;
 	list[n]->deleteValue(str);
 }
 

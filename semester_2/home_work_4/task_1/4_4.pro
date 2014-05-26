@@ -28,4 +28,7 @@ HEADERS += \
     list.h \
     strings.h \
     stringtest.h \
-    hashtest.h
+    hashtest.h \
+    hashfunction.h \
+    hashfunction1.h \
+    hashFunction2.h

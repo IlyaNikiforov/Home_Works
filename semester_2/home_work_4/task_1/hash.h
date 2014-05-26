@@ -1,18 +1,17 @@
 #pragma once
 #include "list.h"
 #include "strings.h"
+#include "hashfunction.h"
 
 class Hash
 {
 	public:
 
-		Hash(int size);
+		Hash(int size, HashFunction *newHashFunction);
 
 		~Hash();
 
-		int hashFunction(Strings *str);
-
-		void changeHashFunction(int newFactor, int newMod);
+		void changeHashFunction(HashFunction *newHashFunction);
 
 		void add(Strings *str);
 
@@ -27,8 +26,7 @@ class Hash
 	private:
 
 		int sizeOfHash;
-		int factor;
-		int mod;
+		HashFunction *hashFunction;
 		List **list;
 };
 

@@ -2,7 +2,7 @@
 #include "hash.h"
 #include "QObject"
 #include "QtTest/QTest"
-
+#include "hashfunction1.h"
 
 class HashTest : public QObject
 {
@@ -13,12 +13,14 @@ class HashTest : public QObject
 
 		void init()
 		{
-			hash = new Hash(10);
+			function = new HashFunction1;
+			hash = new Hash(10, function);
 		}
 
 		void cleanup()
 		{
 			delete hash;
+			delete function;
 		}
 
 		void testAdd()
@@ -28,6 +30,7 @@ class HashTest : public QObject
 			str->add(temp);
 			hash->add(str);
 			QVERIFY(hash->find(str));
+			delete str;
 		}
 
 		void testDel()
@@ -38,6 +41,7 @@ class HashTest : public QObject
 			hash->add(str);
 			hash->del(str);
 			QVERIFY(!hash->find(str));
+			delete str;
 		}
 
 		void testFull()
@@ -63,8 +67,10 @@ class HashTest : public QObject
 			hash->print();
 			hash->del(str3);
 			hash->print();
+			delete str3;
 		}
 
 	private:
 		Hash *hash;
+		HashFunction *function;
 };

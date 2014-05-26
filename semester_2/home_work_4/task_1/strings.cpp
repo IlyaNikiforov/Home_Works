@@ -137,7 +137,8 @@ void Strings::cut(int begin, int end)
 char* Strings::strToChar()
 {
 	char *newchar = new char [length];
-	newchar = string;
+	for (int i = 0; i < length; i++)
+		newchar[i] = string[i];
 	return newchar;
 }
 
