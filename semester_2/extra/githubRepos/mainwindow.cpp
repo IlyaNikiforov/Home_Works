@@ -13,6 +13,11 @@ MainWindow::MainWindow(QWidget *parent) :
 	createLoginWindow();
 }
 
+MainWindow::~MainWindow()
+{
+	clearWindow(mainLayout);
+}
+
 void MainWindow::createLoginWindow()
 {
 	warningLabel = new QLabel(tr("Enter login:"));
@@ -40,8 +45,8 @@ void MainWindow::loginEntered()
 
 void MainWindow::createRepoWindow()
 {
-	QString title = page->page()->mainFrame()->title();
-	if (title[0] == 'P' && title[1] == 'a' && title[2] == 'g' && title[3] == 'e' && title[5] == 'n' && title[6] == 'o')
+	QString title = page->page()->mainFrame()->title().mid(0, 14);
+	if (title == "Page not found")
 	{
 		QMessageBox msgBox;
 		msgBox.setText("The login you entered does not exist on github");

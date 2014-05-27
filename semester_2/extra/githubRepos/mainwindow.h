@@ -27,6 +27,7 @@ class MainWindow : public QDialog
 
 	public:
 		explicit MainWindow(QWidget *parent = 0);
+		~MainWindow();
 		void createLoginWindow();
 		void clearWindow(QLayout *layout);
 		bool isFolder();
