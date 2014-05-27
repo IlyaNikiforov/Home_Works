@@ -43,7 +43,7 @@ Client::Client(QWidget *parent) :
 	///adding operation to buttons:
 	connect(quitButton, SIGNAL(clicked()), this, SLOT(close()));
 	connect(sendButton, SIGNAL(clicked()), this, SLOT(sendMessage()));
-	connect(serverSocket, SIGNAL(readyRead()), this, SLOT(startRead()));
+	connect(serverSocket, SIGNAL(readyRead()), this, SLOT(receiveMessage()));
 	connect(connectButton, SIGNAL(clicked()), this, SLOT(connectToServer()));
 	connect(serverSocket, SIGNAL(disconnected()), this, SLOT(disconnectedFromServer()));
 	connect(serverSocket, SIGNAL(error(QAbstractSocket::SocketError)),

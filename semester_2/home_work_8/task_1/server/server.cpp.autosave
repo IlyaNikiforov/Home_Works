@@ -116,8 +116,8 @@ void Server::acceptClientConnection()
 	connect(clientSocket, SIGNAL(disconnected()), this, SLOT(disconnectedFromClient()));
 	connect(clientSocket, SIGNAL(disconnected()), clientSocket, SLOT(deleteLater()));
 
-	allText	->clear();
-	allText	->textCursor().insertText("Client connected!\n");
+	allText->clear();
+	allText->textCursor().insertText("Client connected!\n");
 
 	sendButton->setEnabled(true);
 }
