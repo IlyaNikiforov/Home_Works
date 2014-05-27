@@ -30,7 +30,6 @@ class HashTest : public QObject
 			str->add(temp);
 			hash->add(str);
 			QVERIFY(hash->find(str));
-			delete str;
 		}
 
 		void testDel()
