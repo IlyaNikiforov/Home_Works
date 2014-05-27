@@ -71,15 +71,13 @@ void MainWindow::showWinner()
 	winner[0] = new int [valueToWin];
 	winner[1] = new int [valueToWin];
 	tictactoe->returnWinningCombination(winner);
-	QPalette Pal(palette());
-	Pal.setColor(QPalette::Background, Qt::red);
 	 for (int i = 0; i < valueToWin; i++)
 	{
+		QPalette pal = vector.at(winner[0][i] * currentSize + winner[1][i])->palette();
+		pal.setColor(QPalette::Button, Qt::red);
+		vector.at(winner[0][i] * currentSize + winner[1][i])->setPalette(pal);
 		vector.at(winner[0][i] * currentSize + winner[1][i])->setAutoFillBackground(true);
-		vector.at(winner[0][i] * currentSize + winner[1][i])->setPalette(Pal);
 		vector.at(winner[0][i] * currentSize + winner[1][i])->show();
-		if (vector.at(winner[0][i] * currentSize + winner[1][i])->palette().background().color() == Qt::red)
-			vector.at(winner[0][i] * currentSize + winner[1][i])->setText("win");
 	}
 	for (int i = 0; i < currentSize; i++)
 		for (int j = 0; j < currentSize; j++)
