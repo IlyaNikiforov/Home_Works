@@ -1,4 +1,5 @@
 #pragma once
+#include "iostream"
 
 template <int dimension>
 class Vector
@@ -6,9 +7,10 @@ class Vector
 public:
 
 	Vector();
+	~Vector();
 
 	/// copy constructor
-	Vector(Vector<dimension> &newVector);
+	Vector(Vector<dimension> const &newVector);
 	Vector(double coord[dimension]);
 	/// return is it zero or not
 	bool isZero();
@@ -17,6 +19,7 @@ public:
 	Vector operator-(Vector<dimension> &vector2);
 	double operator*(Vector<dimension> &vector2);
 	bool operator==(Vector<dimension> &vector2);
+	void print();
 private:
 	double *coordinates;
 };
@@ -29,8 +32,14 @@ Vector<dimension>::Vector()
 		coordinates[i] = 0;
 }
 
+template<int dimension>
+Vector<dimension>::~Vector()
+{
+	delete coordinates;
+}
+
 template <int dimension>
-Vector<dimension>::Vector(Vector<dimension> &newVector)
+Vector<dimension>::Vector(Vector<dimension> const &newVector)
 {
 	coordinates = new double [dimension];
 	for (int i = 0; i < dimension; i++)
@@ -88,4 +97,11 @@ bool Vector<dimension>::operator==(Vector<dimension> &secondVector)
 		if (this->coordinates[i] != secondVector.coordinates[i])
 			return false;
 	return true;
+}
+
+template <int dimension>
+void Vector<dimension>::print()
+{
+	for (int i = 0; i < dimension; i++)
+		std::cout << coordinates[i] << " ";
 }

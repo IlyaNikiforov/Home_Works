@@ -26,23 +26,23 @@ class VectorTest : public QObject {
 
 		void testSum()
 		{
-			Vector<3> testVect;
-			testVect = *firstVect + *secondVect;
+			Vector<3> testVect = *firstVect + *secondVect;
+			testVect.print();
 			QVERIFY(testVect.isZero());
 		}
 
 		void testSubtaction()
 		{
-			Vector<3> testVect;
-			testVect = *firstVect - *secondVect;
+			Vector<3> testVect = *firstVect - *secondVect;
+			testVect.print();
 			double test[3] = {2, 4, 6};
 			QVERIFY(Vector<3>(test) == testVect);
 		}
 
 		void testScalarMult()
 		{
-			double res = *firstVect * *secondVect;
-			QVERIFY(res == (double)(-14));
+			double res = (*firstVect) * (*secondVect);
+			QCOMPARE(res, (double)(-14));
 		}
 
 		void testCopy()
@@ -51,7 +51,6 @@ class VectorTest : public QObject {
 			firstVect = new Vector<3>(*secondVect);
 			QVERIFY(*firstVect == *secondVect);
 		}
-
 	private:
 		Vector<3> *firstVect;
 		Vector<3> *secondVect;
