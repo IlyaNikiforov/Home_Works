@@ -67,6 +67,7 @@ class HashTest : public QObject
 			hash->del(str3);
 			hash->print();
 			delete str3;
+			delete str2;
 		}
 
 	private:

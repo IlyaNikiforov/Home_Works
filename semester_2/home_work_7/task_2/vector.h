@@ -35,7 +35,7 @@ Vector<dimension>::Vector()
 template<int dimension>
 Vector<dimension>::~Vector()
 {
-	delete coordinates;
+	delete[] coordinates;
 }
 
 template <int dimension>
